@@ -1,0 +1,16 @@
+
+version: '3'
+services:
+
+  insightface:
+    container_name: "insightface"
+    build:
+      context: .
+      args:
+        BASE_TAG: "${BASE_TAG:-10.1-cudnn8-runtime-ubuntu18.04}"
+    image: "xkortex/insightface:${TAG:-latest}"
+    volumes:
+      - /tmp/insightface/scratch:/scratch
+      - "${DATA_DIR:-./volumes}/insightface:/root/.insightface:ro"
+
+
